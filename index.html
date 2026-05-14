@@ -149,6 +149,189 @@
     .isi-values { grid-template-columns: 1fr; }
     .stat-grid { grid-template-columns: 1fr 1fr; }
   }
+
+  /* ── SCROLL FADE-IN ── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .fade-in-delay-1 { transition-delay: 0.1s; }
+  .fade-in-delay-2 { transition-delay: 0.2s; }
+  .fade-in-delay-3 { transition-delay: 0.3s; }
+  .fade-in-delay-4 { transition-delay: 0.4s; }
+
+  /* ── HERO ANIMATIONS ── */
+  .hero-cross { animation: floatCross 3s ease-in-out infinite; }
+  @keyframes floatCross {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-8px); }
+  }
+  .hero-verse {
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  .hero-verse:hover {
+    border-color: rgba(184,146,42,0.7);
+    box-shadow: 0 0 24px rgba(184,146,42,0.12);
+  }
+  .hero-scroll { animation: bounce 2s ease-in-out infinite; cursor: pointer; }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); opacity: 0.3; }
+    50%       { transform: translateY(6px); opacity: 0.6; }
+  }
+
+  /* ── NAV ACTIVE HIGHLIGHT ── */
+  .nav-links a { position: relative; }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 0; right: 0;
+    height: 1px;
+    background: var(--gold-light);
+    transform: scaleX(0);
+    transition: transform 0.25s ease;
+    transform-origin: left;
+  }
+  .nav-links a:hover::after,
+  .nav-links a.active::after { transform: scaleX(1); }
+  .nav-links a.active { color: var(--gold-light); }
+
+  /* ── STAT CARDS ── */
+  .stat-card {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    cursor: default;
+  }
+  .stat-card:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.3);
+  }
+  .stat-card .num { transition: color 0.3s; }
+  .stat-card:hover .num { color: var(--gold); }
+
+  /* ── CHURCH CARDS ── */
+  .church-card {
+    transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+  }
+  .church-card:hover {
+    box-shadow: 0 12px 40px rgba(13,27,42,0.18);
+    transform: translateY(-5px);
+    border-color: var(--gold-dim);
+  }
+  .church-card-top { transition: background 0.3s; }
+  .church-card:hover .church-card-top { background: var(--navy-light); }
+
+  /* ── BELIEF ITEMS ── */
+  .belief-item {
+    transition: background 0.25s ease, transform 0.25s ease;
+    cursor: default;
+  }
+  .belief-item:hover {
+    background: var(--navy-light);
+    transform: scale(1.01);
+  }
+  .belief-num { transition: color 0.3s, font-size 0.3s; }
+  .belief-item:hover .belief-num {
+    color: rgba(184,146,42,0.6);
+    font-size: 2.3rem;
+  }
+
+  /* ── VALUE PILLS ── */
+  .value-pill {
+    transition: background 0.25s, border-color 0.25s, transform 0.25s;
+    cursor: default;
+  }
+  .value-pill:hover {
+    background: var(--navy-light);
+    border-color: var(--gold-dim);
+    transform: translateY(-2px);
+  }
+
+  /* ── BISHOP & LIAISON CARDS ── */
+  .bishop-card {
+    transition: box-shadow 0.3s, border-left-color 0.3s;
+  }
+  .bishop-card:hover {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+    border-left-color: var(--gold-light);
+  }
+  .liaison-card {
+    transition: box-shadow 0.3s, border-color 0.3s;
+  }
+  .liaison-card:hover {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+    border-color: rgba(184,146,42,0.5);
+  }
+  .bishop-photo, .liaison-photo, .isi-leader-photo, .pastor-photo {
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .bishop-card:hover .bishop-photo,
+  .liaison-card:hover .liaison-photo,
+  .isi-leader:hover .isi-leader-photo,
+  .church-card:hover .pastor-photo {
+    transform: scale(1.08);
+    box-shadow: 0 0 0 4px rgba(184,146,42,0.3);
+  }
+
+  /* ── ZOOM CARD PULSE ── */
+  @keyframes zoomPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(184,146,42,0.25); }
+    50%       { box-shadow: 0 0 0 8px rgba(184,146,42,0); }
+  }
+  .zoom-card { animation: zoomPulse 3s ease-in-out infinite; }
+  .zoom-join-btn {
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s !important;
+  }
+  .zoom-join-btn:hover {
+    background: var(--gold-light) !important;
+    transform: scale(1.04);
+    box-shadow: 0 4px 18px rgba(184,146,42,0.4);
+  }
+
+  /* ── REGION TAGS ── */
+  .region-tag {
+    transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
+    cursor: default;
+  }
+  .region-tag:hover {
+    background: rgba(184,146,42,0.15);
+    color: var(--gold-light);
+    border-color: var(--gold-dim);
+    transform: translateY(-1px);
+  }
+
+  /* ── CONTACT LINKS ── */
+  .contact-row a {
+    transition: color 0.2s, letter-spacing 0.2s;
+  }
+  .contact-row a:hover {
+    color: var(--gold);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── PARALLAX HERO ── */
+  .hero { will-change: background-position; }
+
+  /* ── UPCOMING BANNER ── */
+  .upcoming-banner {
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  .upcoming-banner:hover {
+    border-color: rgba(184,146,42,0.55);
+    box-shadow: 0 4px 24px rgba(184,146,42,0.08);
+  }
+  .upcoming-icon { transition: transform 0.4s; }
+  .upcoming-banner:hover .upcoming-icon { transform: rotate(90deg) scale(1.2); }
+
+  /* ── FOOTER ── */
+  .footer-brand {
+    transition: color 0.3s, letter-spacing 0.3s;
+    cursor: default;
+  }
+  .footer-brand:hover { color: var(--gold); letter-spacing: 0.08em; }
 </style>
 </head>
 <body>
@@ -489,5 +672,78 @@
   <div style="margin-top:1.5rem; font-size:0.72rem; color:rgba(255,255,255,0.18); letter-spacing:0.1em;">Serving Kenya · Kisii · Murang'a</div>
 </footer>
 
+<script>
+  // ── SCROLL FADE-IN ──
+  document.querySelectorAll('.section-inner > *, .church-card, .belief-item, .stat-card, .value-pill').forEach((el, i) => {
+    el.classList.add('fade-in');
+    if (i % 4 === 1) el.classList.add('fade-in-delay-1');
+    if (i % 4 === 2) el.classList.add('fade-in-delay-2');
+    if (i % 4 === 3) el.classList.add('fade-in-delay-3');
+  });
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); fadeObserver.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+
+  // ── ANIMATED STAT COUNTERS ──
+  function animateCounter(el, target, duration) {
+    let start = 0, step = target / (duration / 16);
+    const tick = () => {
+      start = Math.min(start + step, target);
+      el.textContent = Math.floor(start);
+      if (start < target) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const numEl = e.target.querySelector('.num');
+        if (numEl) {
+          const target = parseInt(numEl.textContent);
+          animateCounter(numEl, target, 1200);
+        }
+        counterObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.stat-card').forEach(el => counterObserver.observe(el));
+
+  // ── ACTIVE NAV HIGHLIGHT ──
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const navObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(a => a.classList.remove('active'));
+        const active = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(s => navObserver.observe(s));
+
+  // ── PARALLAX HERO ──
+  const hero = document.querySelector('.hero');
+  window.addEventListener('scroll', () => {
+    const offset = window.scrollY;
+    if (hero && offset < window.innerHeight) {
+      hero.style.backgroundPositionY = `${offset * 0.35}px`;
+    }
+  }, { passive: true });
+
+  // ── ZOOM CARD CLASS ──
+  const zoomCard = document.querySelector('#isi .section-inner div[style*="border-left: 3px solid var(--gold)"]');
+  if (zoomCard) zoomCard.classList.add('zoom-card');
+
+  // ── ZOOM JOIN BUTTON ──
+  const zoomBtn = document.querySelector('a[href*="zoom.us"]');
+  if (zoomBtn) zoomBtn.classList.add('zoom-join-btn');
+
+  // ── SCROLL TO TOP ON LOGO CLICK ──
+  document.querySelector('.hero-scroll')?.addEventListener('click', () => {
+    document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' });
+  });
+</script>
 </body>
 </html>
